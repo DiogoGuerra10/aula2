@@ -1,8 +1,16 @@
-module.exports = {
-  testMatch: ["*/_test_//.[jt]s?(x)", "*/?(.)+(spec|test).[jt]s?(x)"],
-  testPathIgnorePatterns: ["\\\\node_modules\\\\"],
+/** @type {import('jest').Config} */
+const config = {
+  verbose: true,
   testEnvironment: "jest-environment-jsdom",
+  testMatch: [
+    "**/__tests__/**/*.[jt]s?(x)", // Corrigido
+    "**/?(*.)+(spec|test).[tj]s?(x)", // Corrigido
+  ],
   collectCoverage: true,
-  coverageDirectory: "./coverage", // Certifique-se de que esta linha está presente
-  coverageReporters: ["json"], // Adicione esta linha para gerar relatórios JSON
+  testPathIgnorePatterns: ["<rootDir>/node_modules/"], // Usar <rootDir> para melhor compatibilidade
+  transform: {
+    "^.+\\.[t|j]sx?$": "babel-jest",
+  },
 };
+
+module.exports = config;
