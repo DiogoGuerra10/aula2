@@ -49,11 +49,6 @@ jobs:
         run: npm test -- -u 
         working-directory: ./tdw-aleluia
 
-      # Adicione uma etapa para listar arquivos e diretórios
-      - name: List all files and directories
-        run: ls -R
-        working-directory: ./tdw-aleluia
-
       # Adicione uma etapa para listar arquivos de cobertura
       - name: List coverage files
         run: ls -l ./coverage
