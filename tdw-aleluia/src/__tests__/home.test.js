@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import Home from "../pages/home";
+import Home from "../pages/home.js";
 test("verifica se o componente Home é renderizado com o texto correto", () => {
   // Renderiza o componente Home
   render(<Home />);
