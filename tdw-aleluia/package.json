@@ -9,7 +9,8 @@
     "lint": "next lint",
     "prettier": "prettier --write \"src/*/.{js,jsx,ts,tsx}\"",
     "test": "jest --config jest.config.js",
-    "coverage": "jest --coverage"
+    "coverage": "jest --coverage",
+    "export": "next build && next export"
   },
   "dependencies": {
     "@types/testing-library__react": "^10.2.0",
