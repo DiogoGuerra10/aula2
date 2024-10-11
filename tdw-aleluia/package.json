@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "prettier": "prettier --write \"src/*/.{js,jsx,ts,tsx}\"",
-    "test": "jest --config jest.config.js",
+    "test": "jest",
     "coverage": "jest --coverage",
     "export": "next build && next export"
   },
@@ -44,12 +44,5 @@
     "react-test-renderer": "^18.3.1",
     "ts-jest": "^29.2.5",
     "typescript": "^5.6.2"
-  },
-  "jest": {
-    "collectCoverage": true,
-    "coverageDirectory": "coverage",
-    "coverageReporters": [
-      "json"
-    ]
   }
 }
