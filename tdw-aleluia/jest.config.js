@@ -1,7 +1,7 @@
 /** @type {import('jest').Config} */
 const config = {
     verbose: true,
-    testEnvironment: "jest-environment-jsdom",
+    testEnvironment: "jsdom",
     testMatch: [
       "**/__tests__/**/*.[jt]s?(x)", // Corrigido
       "**/?(*.)+(spec|test).[tj]s?(x)", // Corrigido
