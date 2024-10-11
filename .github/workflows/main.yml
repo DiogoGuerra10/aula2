@@ -44,6 +44,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./tdw-aleluia
+
+      - name: Install ESLint
+        run: npm install eslint eslint-plugin-react --save-dev
+        working-directory: ./tdw-aleluia
+
       - name: Run Lint
         run: npx eslint .
         working-directory: ./tdw-aleluia
