@@ -1,16 +1,16 @@
 /** @type {import('jest').Config} */
 const config = {
-    verbose: true,
-    testEnvironment: "jsdom",
-    testMatch: [
-      "**/__tests__/**/*.[jt]s?(x)", // Corrigido
-      "**/?(*.)+(spec|test).[tj]s?(x)", // Corrigido
-    ],
-    collectCoverage: true,
-    testPathIgnorePatterns: ["<rootDir>/node_modules/"], // Usar <rootDir> para melhor compatibilidade
-    transform: {
-      "^.+\\.[t|j]sx?$": "babel-jest",
-    },
-  };
-  
-  module.exports = config;
+  verbose: true,
+  testEnvironment: "jsdom",
+  testMatch: [
+    "**/__tests__/**/*.[jt]s?(x)",
+    "**/?(*.)+(spec|test).[tj]s?(x)",
+  ],
+  collectCoverage: true,
+  testPathIgnorePatterns: ["<rootDir>/node_modules/"],
+  transform: {
+    "^.+\\.[t|j]sx?$": "babel-jest",
+  },
+};
+
+module.exports = config;
