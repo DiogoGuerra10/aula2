@@ -1,8 +1,8 @@
-const js = require('@eslint/js');
-const pluginReact = require('eslint-plugin-react');
-const babelParser = require('@babel/eslint-parser');
+import js from '@eslint/js';
+import pluginReact from 'eslint-plugin-react';
+import babelParser from '@babel/eslint-parser';
 
-module.exports = [
+export default [
   js.configs.recommended,
   {
     languageOptions: {
@@ -14,16 +14,18 @@ module.exports = [
           jsx: true, // Habilita a análise de JSX
         },
       },
+      globals: {
+        // Definindo variáveis globais que você está usando
+        module: 'readonly',
+        test: 'readonly',
+        expect: 'readonly',
+        // Adicione mais globais aqui conforme necessário
+      },
     },
     files: ['**/*.js', '**/*.jsx'], // Adapte conforme seu projeto
     rules: {
       'no-unused-vars': 'warn',
       'react/react-in-jsx-scope': 'off', // Desativa a necessidade do import de React no JSX (React 17+)
-    },
-    env: {
-      browser: true,   // Para código que roda em navegadores
-      jest: true,      // Para código que usa Jest
-      node: true,      // Para código que usa Node.js
     },
   },
   {
