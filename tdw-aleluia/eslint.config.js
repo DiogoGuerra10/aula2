@@ -15,11 +15,9 @@ export default [
         },
       },
       globals: {
-        // Definindo variáveis globais que você está usando
         module: 'readonly',
         test: 'readonly',
         expect: 'readonly',
-        // Adicione mais globais aqui conforme necessário
       },
     },
     files: ['**/*.js', '**/*.jsx'], // Adapte conforme seu projeto
