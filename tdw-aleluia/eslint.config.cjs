@@ -20,6 +20,11 @@ module.exports = [
       'no-unused-vars': 'warn',
       'react/react-in-jsx-scope': 'off', // Desativa a necessidade do import de React no JSX (React 17+)
     },
+    env: {
+      browser: true,   // Para código que roda em navegadores
+      jest: true,      // Para código que usa Jest
+      node: true,      // Para código que usa Node.js
+    },
   },
   {
     plugins: {
