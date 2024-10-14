@@ -1,6 +1,14 @@
 name: CI
 
-on: [push, pull_request]
+on: 
+  push:
+    branches:
+      - master
+      - main
+  pull_request:
+    branches:
+      - master
+      - main
 
 jobs:
   install-dependencies:
@@ -12,7 +20,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "22"
+          node-version: '22'
 
       - name: Install dependencies
         run: npm install
@@ -28,7 +36,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "22"
+          node-version: '22'
 
       - name: Install dependencies
         run: npm install
@@ -62,7 +70,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "22"
+          node-version: '22'
 
       - name: Install dependencies
         run: npm install
@@ -85,6 +93,10 @@ jobs:
         with:
             node-version: '22'
       
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./tdw-aleluia
+
       - name: Build project
         run: npm run build
         working-directory: ./tdw-aleluia
