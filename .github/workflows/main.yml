@@ -38,6 +38,10 @@ jobs:
         with:
           node-version: '22'
 
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./tdw-aleluia
+
       - name: Run tests
         run: npx jest --config jest.config.js
         working-directory: ./tdw-aleluia
@@ -68,6 +72,10 @@ jobs:
         with:
           node-version: '22'
 
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./tdw-aleluia
+
       - name: Run Prettier
         run: npm run prettier
         working-directory: ./tdw-aleluia
@@ -83,7 +91,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '22'
+            node-version: '22'
       
       - name: Install dependencies
         run: npm install
@@ -91,10 +99,6 @@ jobs:
 
       - name: Build project
         run: npm run build
-        working-directory: ./tdw-aleluia
-
-      - name: Export project
-        run: npm run export
         working-directory: ./tdw-aleluia
         
   deploy:
@@ -109,10 +113,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "22"
-
-      - name: Install Netlify CLI
-        run: npm install -g netlify-cli
-        working-directory: ./tdw-aleluia
 
       - name: Deploy to Netlify
         run: npx netlify-cli deploy --site lucky-semifreddo-6de349.netlify.app --auth ${{ secrets.NETLIFY_AUTH_TOKEN }} --prod --dir=out
