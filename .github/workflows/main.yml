@@ -1,14 +1,6 @@
 name: CI
 
-on:
-  push:
-    branches:
-      - master
-      - main
-  pull_request:
-    branches:
-      - master
-      - main
+on: [push, pull_request]
 
 jobs:
   install-dependencies:
@@ -20,34 +12,15 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '22'
-
-      - name: Clear npm cache
-        run: npm cache clean --force
-        working-directory: ./tdw-aleluia
+          node-version: "22"
 
       - name: Install dependencies
         run: npm install
         working-directory: ./tdw-aleluia
 
-      - name: Install jest-environment-jsdom
-        run: npm install jest-environment-jsdom --save-dev
-        working-directory: ./tdw-aleluia
-
-  run-prettier:
+  run-tests:
     runs-on: ubuntu-latest
     needs: install-dependencies
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Run Prettier
-        run: npx prettier --write .
-        working-directory: ./tdw-aleluia
-
-  run-lint:
-    runs-on: ubuntu-latest
-    needs: run-prettier
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -55,26 +28,11 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '22'
+          node-version: "22"
 
       - name: Install dependencies
         run: npm install
         working-directory: ./tdw-aleluia
-
-      - name: Install ESLint
-        run: npm install eslint eslint-plugin-react --save-dev
-        working-directory: ./tdw-aleluia
-
-      - name: Run Lint
-        run: npx eslint .
-        working-directory: ./tdw-aleluia
-
-  run-tests:
-    runs-on: ubuntu-latest
-    needs: run-lint
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
 
       - name: Run tests
         run: npx jest --config jest.config.js
@@ -94,10 +52,9 @@ jobs:
           name: codecov-umbrella
           fail_ci_if_error: true
 
-  build-project:
+  linting:
     runs-on: ubuntu-latest
     needs: run-tests
-    if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main'  # Condição para execução
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -105,8 +62,12 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '22'
+          node-version: "22"
 
-      - name: Build project
-        run: npm run build
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./tdw-aleluia
+
+      - name: Run Prettier
+        run: npm run prettier
         working-directory: ./tdw-aleluia
