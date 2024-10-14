@@ -1,16 +1,14 @@
 /** @type {import('jest').Config} */
 const config = {
-  verbose: true,
   testEnvironment: "jsdom",
   testMatch: [
     "**/__tests__/**/*.[jt]s?(x)",
     "**/?(*.)+(spec|test).[tj]s?(x)",
   ],
   collectCoverage: true,
+  coverageDirectory: "./coverage",
+  coverageReporters: ["json"],
   testPathIgnorePatterns: ["<rootDir>/node_modules/"],
-  transform: {
-    "^.+\\.[t|j]sx?$": "babel-jest",
-  },
 };
 
 module.exports = config;
