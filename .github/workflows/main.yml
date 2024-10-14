@@ -22,6 +22,10 @@ jobs:
         with:
           node-version: '22'
 
+      - name: Clear npm cache
+        run: npm cache clean --force
+        working-directory: ./tdw-aleluia
+
       - name: Install dependencies
         run: npm install
         working-directory: ./tdw-aleluia
