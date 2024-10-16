@@ -132,8 +132,11 @@ jobs:
       - name: Print current working directory
         run: pwd
 
-      - name: List contents of out directory
-        run: ls -la ./tdw-aleluia/out
+      # Nova etapa: verificar o conteúdo do diretório out antes do deploy
+      - name: List contents of out directory before deploy
+        run: |
+          echo "Checking contents of out directory before deploy..."
+          ls -la ./tdw-aleluia/out
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
