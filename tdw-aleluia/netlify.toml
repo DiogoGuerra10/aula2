@@ -1,2 +1,2 @@
-[build] 
-    publish = "../tdw-aleluia/out" 
+[build]
+  publish = "tdw-aleluia/out"
