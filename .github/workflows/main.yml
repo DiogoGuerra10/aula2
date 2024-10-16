@@ -104,11 +104,23 @@ jobs:
         run: npm run build
         working-directory: ./tdw-aleluia
 
+      # Nova etapa: verificar o conteúdo imediatamente após o build
       - name: List all files after build
         run: |
           echo "Listing all files after build..."
           ls -R ./tdw-aleluia
         
+      # Nova etapa: verificar o conteúdo do diretório out
+      - name: Verify 'out' directory after build
+        run: |
+          if [ -d "./tdw-aleluia/out" ]; then
+            echo "'out' directory exists:"
+            ls -la ./tdw-aleluia/out
+          else
+            echo "'out' directory not found!"
+            exit 1
+          fi
+
   deploy:
     runs-on: ubuntu-latest
     needs: build-project
