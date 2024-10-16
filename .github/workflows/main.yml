@@ -129,13 +129,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Print current working directory
+      - name: Print current working directory before deploy
         run: pwd
 
       # Verifique a existência do diretório out antes do deploy
       - name: List contents of 'out' directory before deploy
         run: |
           echo "Listing contents of 'out' directory before deploy..."
+          pwd # Imprimir diretório atual
           ls -la ./tdw-aleluia/out || echo "'out' directory not found!"
 
       - name: Set up Node.js
