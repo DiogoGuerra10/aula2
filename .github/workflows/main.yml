@@ -103,6 +103,11 @@ jobs:
       - name: Build project
         run: npm run build
         working-directory: ./tdw-aleluia
+
+      - name: List all files after build
+        run: |
+          echo "Listing all files after build..."
+          ls -R ./tdw-aleluia
         
   deploy:
     runs-on: ubuntu-latest
