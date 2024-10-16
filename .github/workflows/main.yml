@@ -24,7 +24,7 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: ./tdw-aleluia
+        working-directory: /home/runner/work/aula2/tdw-aleluia
 
   run-tests:
     runs-on: ubuntu-latest
@@ -40,22 +40,22 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: ./tdw-aleluia
+        working-directory: /home/runner/work/aula2/tdw-aleluia
 
       - name: Run tests
         run: npx jest --config jest.config.js
-        working-directory: ./tdw-aleluia
+        working-directory: /home/runner/work/aula2/tdw-aleluia
 
       - name: List coverage files
         run: |
           echo "Listing coverage files..."
-          ls -R ./tdw-aleluia/coverage
+          ls -R /home/runner/work/aula2/tdw-aleluia/coverage
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          files: ./tdw-aleluia/coverage/coverage-final.json
+          files: /home/runner/work/aula2/tdw-aleluia/coverage/coverage-final.json
           flags: unittests
           name: codecov-umbrella
           fail_ci_if_error: true
@@ -74,11 +74,13 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: ./tdw-aleluia
+        working-directory: /home/runner/work/aula2/tdw-aleluia
+
 
       - name: Run Prettier
         run: npm run prettier
-        working-directory: ./tdw-aleluia
+        working-directory: /home/runner/work/aula2/tdw-aleluia
+
 
   build-project:
     runs-on: ubuntu-latest
@@ -95,11 +97,13 @@ jobs:
       
       - name: Install dependencies
         run: npm install
-        working-directory: ./tdw-aleluia
+        working-directory: /home/runner/work/aula2/tdw-aleluia
+
 
       - name: Build project
         run: npm run build
-        working-directory: ./tdw-aleluia
+        working-directory: /home/runner/work/aula2/tdw-aleluia
+
         
   deploy:
     runs-on: ubuntu-latest
@@ -116,4 +120,4 @@ jobs:
 
       - name: Deploy to Netlify
         run: npx netlify-cli deploy --site lucky-semifreddo-6de349.netlify.app --auth ${{ secrets.NETLIFY_AUTH_TOKEN }} --prod --dir=out
-        working-directory: ./tdw-aleluia
+        working-directory: /home/runner/work/aula2/tdw-aleluia
