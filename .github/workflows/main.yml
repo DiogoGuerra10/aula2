@@ -43,7 +43,7 @@ jobs:
         working-directory: ./tdw-aleluia
 
       - name: Run tests
-        run: npx jest --config jest.config.js
+        run: npm test
         working-directory: ./tdw-aleluia
 
       - name: List coverage files
@@ -97,8 +97,8 @@ jobs:
         run: npm install
         working-directory: ./tdw-aleluia
 
-      - name: Build project
-        run: npm run build
+      - name: Build and Export project
+        run: npm run export
         working-directory: ./tdw-aleluia
         
   deploy:
