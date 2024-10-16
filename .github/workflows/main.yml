@@ -121,6 +121,13 @@ jobs:
             exit 1
           fi
 
+      # Nova etapa: salvar o diretório out como um artefato
+      - name: Upload 'out' directory as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: out-directory
+          path: ./tdw-aleluia/out
+
   deploy:
     runs-on: ubuntu-latest
     needs: build-project
@@ -132,7 +139,13 @@ jobs:
       - name: Print current working directory
         run: pwd
 
-      # Nova etapa: verificar o conteúdo do diretório out antes do deploy
+      # Nova etapa: baixar o artefato
+      - name: Download 'out' directory artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: out-directory
+
+      # Verificar o conteúdo do diretório out antes do deploy
       - name: List contents of out directory before deploy
         run: |
           echo "Checking contents of out directory before deploy..."
