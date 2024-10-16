@@ -104,13 +104,12 @@ jobs:
         run: npm run build
         working-directory: ./tdw-aleluia
 
-      # Nova etapa: verificar o conteúdo imediatamente após o build
+      # Etapa para verificar o conteúdo do diretório out
       - name: List all files after build
         run: |
           echo "Listing all files after build..."
           ls -R ./tdw-aleluia
-        
-      # Nova etapa: verificar o conteúdo do diretório out
+
       - name: Verify 'out' directory after build
         run: |
           if [ -d "./tdw-aleluia/out" ]; then
@@ -144,6 +143,11 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: out-directory
+
+      - name: List contents of 'out' directory before deploy
+        run: |
+          echo "Listing contents of 'out' directory before deploy..."
+          ls -la ./tdw-aleluia/out
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
