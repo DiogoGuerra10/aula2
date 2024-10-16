@@ -87,6 +87,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
+      - name: Print current working directory
+        run: pwd
       
       - name: Set up Node.js
         uses: actions/setup-node@v3
@@ -115,4 +118,4 @@ jobs:
           node-version: "22"
 
       - name: Deploy to Netlify
-        run: npx netlify-cli deploy --site lucky-semifreddo-6de349.netlify.app --auth ${{ secrets.NETLIFY_AUTH_TOKEN }} --prod --dir=$(pwd)/tdw-aleluia/out
+        run: npx netlify-cli deploy --site lucky-semifreddo-6de349.netlify.app --auth ${{ secrets.NETLIFY_AUTH_TOKEN }} --prod --dir=./tdw-aleluia/out
