@@ -116,4 +116,4 @@ jobs:
 
       - name: Deploy to Netlify
         run: npx netlify-cli deploy --site lucky-semifreddo-6de349.netlify.app --auth ${{ secrets.NETLIFY_AUTH_TOKEN }} --prod --dir=out
-        working-directory: ./tdw-aleluia
+        
