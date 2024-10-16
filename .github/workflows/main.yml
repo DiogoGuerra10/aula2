@@ -112,6 +112,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Print current working directory
+        run: pwd
+
+      - name: List contents of out directory
+        run: ls -la ./tdw-aleluia/out
+
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
