@@ -104,12 +104,13 @@ jobs:
         run: npm run build
         working-directory: ./tdw-aleluia
 
-      # Etapa para verificar o conteúdo do diretório out
+      # Etapa para verificar o conteúdo do diretório out após o build
       - name: List all files after build
         run: |
-          echo "Listing all files after build..."
+          echo "Listing all files and directories after build..."
           ls -R ./tdw-aleluia
 
+      # Verifique a existência do diretório out
       - name: Verify 'out' directory after build
         run: |
           if [ -d "./tdw-aleluia/out" ]; then
@@ -119,13 +120,6 @@ jobs:
             echo "'out' directory not found!"
             exit 1
           fi
-
-      # Nova etapa: salvar o diretório out como um artefato
-      - name: Upload 'out' directory as artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: out-directory
-          path: ./tdw-aleluia/out
 
   deploy:
     runs-on: ubuntu-latest
@@ -138,16 +132,11 @@ jobs:
       - name: Print current working directory
         run: pwd
 
-      # Nova etapa: baixar o artefato
-      - name: Download 'out' directory artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: out-directory
-
+      # Verifique a existência do diretório out antes do deploy
       - name: List contents of 'out' directory before deploy
         run: |
           echo "Listing contents of 'out' directory before deploy..."
-          ls -la ./tdw-aleluia/out
+          ls -la ./tdw-aleluia/out || echo "'out' directory not found!"
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
