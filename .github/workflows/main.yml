@@ -44,6 +44,18 @@ jobs:
         run: npm install
         working-directory: ./tdw-aleluia
 
+  run-tests:
+    runs-on: ubuntu-latest
+    needs: install-dependencies
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+
       - name: Run tests
         run: npx jest --config jest.config.js
         working-directory: ./tdw-aleluia
@@ -64,7 +76,7 @@ jobs:
 
   linting:
     runs-on: ubuntu-latest
-    needs: install-dependencies  # Corrigido para depender da instalação
+    needs: run-tests
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
